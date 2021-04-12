@@ -686,8 +686,11 @@ namespace Luminosity.IO
 			primary.Type = InputType.Button;
 			primary.Positive = primaryKey;
 
-			InputBinding secondary = action.CreateNewBinding(primary);
-			secondary.Positive = secondaryKey;
+			if (secondaryKey != KeyCode.None)
+			{
+				InputBinding secondary = action.CreateNewBinding(primary);
+				secondary.Positive = secondaryKey;
+			}
 
 			action.Initialize();
 			m_instance.m_actionLookup[controlSchemeName][buttonName] = action;
